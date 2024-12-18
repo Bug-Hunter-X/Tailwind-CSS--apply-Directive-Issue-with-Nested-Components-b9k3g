@@ -1,0 +1,36 @@
+The solution involves refactoring the code to avoid the nested `@apply` situation. Instead, we should apply styles directly within the parent component or create a custom CSS class to encapsulate the styling. 
+
+Here's an example:
+
+**Original (buggy) code (bug.html):**
+```html
+<div class="bg-gray-100 p-4">
+  <div class="inner-component"></div>
+</div>
+
+<style>
+  .inner-component {
+    @apply bg-blue-500 p-2;
+  }
+</style>
+```
+
+**Corrected code (bugSolution.html):**
+```html
+<div class="bg-gray-100 p-4 bg-blue-500 p-2">
+  <div></div>
+</div>
+```
+Or, by creating a custom class:
+```html
+<div class="bg-gray-100 p-4">
+  <div class="custom-style"></div>
+</div>
+
+<style>
+  .custom-style {
+    background-color: blue;
+    padding: 2rem;
+  }
+</style>
+```
